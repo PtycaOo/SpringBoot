@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
 @Controller
 public class UserControllerImp {
     private final UserService userService;
@@ -46,7 +45,7 @@ public class UserControllerImp {
 
     @PostMapping("/edit")
     public String updateUser(@ModelAttribute("user") @Valid User user) {
-        userService.updateUser(user.getId(),user);
+        userService.updateUser(user.getId(), user);
         return "redirect:/users";
     }
 

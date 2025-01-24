@@ -38,16 +38,16 @@ public class UserServiceImp implements UserService {
     @Override
     public User updateUser(Long id, User updateUser) {
         Optional<User> existingUser = userDao.findById(id);
-        if(existingUser.isPresent()){
+        if (existingUser.isPresent()) {
             User user = existingUser.get();
-            if(updateUser.getName()!=null){
+            if (updateUser.getName() != null) {
                 user.setName(updateUser.getName());
             }
-            if(updateUser.getLast_name()!=null){
+            if (updateUser.getLast_name() != null) {
                 user.setLast_name(updateUser.getLast_name());
             }
 
-            if(updateUser.getEmail()!=null){
+            if (updateUser.getEmail() != null) {
                 user.setEmail(updateUser.getEmail());
             }
             return userDao.save(user);
@@ -56,7 +56,6 @@ public class UserServiceImp implements UserService {
         }
 
     }
-
 
 
     @Override

@@ -4,12 +4,14 @@ import com.example.springboot.dao.UserDao;
 import com.example.springboot.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 public class UserServiceImp implements UserService {
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
@@ -31,6 +33,28 @@ public class UserServiceImp implements UserService {
     @Transactional(readOnly = true)
     public User readUserById(Long id) {
         return userDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public User updateUser(Long id, User updateUser) {
+        Optional<User> existingUser = userDao.findById(id);
+        if(existingUser.isPresent()){
+            User user = existingUser.get();
+            if(updateUser.getName()!=null){
+                user.setName(updateUser.getName());
+            }
+            if(updateUser.getLast_name()!=null){
+                user.setLast_name(updateUser.getLast_name());
+            }
+
+            if(updateUser.getEmail()!=null){
+                user.setEmail(updateUser.getEmail());
+            }
+            return userDao.save(user);
+        } else {
+            throw new IllegalArgumentException("User with id " + id + " not found");
+        }
+
     }
 
 

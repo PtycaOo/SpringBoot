@@ -44,10 +44,9 @@ public class UserControllerImp {
         return "edit";
     }
 
-
     @PostMapping("/edit")
     public String updateUser(@ModelAttribute("user") @Valid User user) {
-        userService.createUser(user);
+        userService.updateUser(user.getId(),user);
         return "redirect:/users";
     }
 

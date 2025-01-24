@@ -18,6 +18,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    public User() {
+    }
+
     public User(Long id, String name, String last_name, String email) {
         this.id = id;
         this.name = name;
@@ -25,8 +28,7 @@ public class User {
         this.email = email;
     }
 
-    public User() {
-    }
+
 
     public Long getId() {
         return id;

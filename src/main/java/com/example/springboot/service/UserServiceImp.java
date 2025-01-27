@@ -41,16 +41,9 @@ public class UserServiceImp implements UserService {
         Optional<User> existingUser = userDao.findById(id);
         if (existingUser.isPresent()) {
             User user = existingUser.get();
-            if (updateUser.getName() != null) {
-                user.setName(updateUser.getName());
-            }
-            if (updateUser.getLast_name() != null) {
-                user.setLast_name(updateUser.getLast_name());
-            }
-
-            if (updateUser.getEmail() != null) {
-                user.setEmail(updateUser.getEmail());
-            }
+            user.setName(updateUser.getName());
+            user.setLast_name(updateUser.getLast_name());
+            user.setEmail(updateUser.getEmail());
             return userDao.save(user);
         } else {
             throw new IllegalArgumentException("User with id " + id + " not found");

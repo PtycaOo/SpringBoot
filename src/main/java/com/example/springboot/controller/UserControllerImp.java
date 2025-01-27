@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 
 @Controller
 public class UserControllerImp {
@@ -21,7 +23,8 @@ public class UserControllerImp {
 
     @GetMapping("/users")
     public String getAllUser(Model model) {
-        model.addAttribute("user", userService.readAllUser());
+        List<User> allUsers = userService.readAllUser();
+        model.addAttribute("user", allUsers);
         return "users";
     }
 

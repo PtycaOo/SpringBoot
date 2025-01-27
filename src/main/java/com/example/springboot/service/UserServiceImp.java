@@ -36,6 +36,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional
     public User updateUser(Long id, User updateUser) {
         Optional<User> existingUser = userDao.findById(id);
         if (existingUser.isPresent()) {

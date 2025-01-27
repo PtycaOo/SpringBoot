@@ -3,6 +3,7 @@ package com.example.springboot.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -13,16 +14,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Поле Имя не может быть пустым")
     @Column(name = "name")
+    @NotNull
     private String name;
 
-    @NotBlank(message = "Поле Фамилия не может быть пустым")
     @Column(name = "last_name", nullable = false)
+    @NotNull
     private String last_name;
 
     @Column(name = "email")
-    @NotBlank(message = "Email не может быть пустым")
+    @NotNull
     private String email;
 
     public User() {

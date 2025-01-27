@@ -17,7 +17,7 @@ public class User {
     @NotNull
     private String name;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     @NotNull
     private String last_name;
 

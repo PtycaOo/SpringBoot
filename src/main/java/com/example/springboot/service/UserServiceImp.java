@@ -48,7 +48,6 @@ public class UserServiceImp implements UserService {
         } else {
             throw new IllegalArgumentException("User with id " + id + " not found");
         }
-
     }
 
 
